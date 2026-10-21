@@ -1,5 +1,7 @@
 # ClearData App
 
+> Projet étudiant CESI, non affilié au Ministère de la Transition écologique.
+
 Application mobile Flutter de surveillance de la qualité de l'air en France, consommant les données d'une base relationnelle de ~2,9 millions de relevés (jeu de données synthétique construit sur les communes INSEE, période mai 2025 – avril 2026).
 
 ## Contexte du projet

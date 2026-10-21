@@ -152,6 +152,10 @@ class _CarteScreenState extends State<CarteScreen> {
                         );
                       }).whereType<Marker>().toList(),
                     ),
+                    // Attribution exigée par les conditions d'utilisation de CARTO Basemaps
+                    const SimpleAttributionWidget(
+                      source: Text('© OpenStreetMap contributors, © CARTO'),
+                    ),
                   ],
                 ),
 

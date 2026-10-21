@@ -86,6 +86,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                         ),
+                        const SizedBox(height: 4),
+                        const Text('Projet étudiant CESI, non affilié au Ministère de la Transition écologique',
+                          style: TextStyle(color: kTextMuted, fontSize: 10)),
                         const SizedBox(height: 10),
                         const Text('Qualité de l\'air', style: TextStyle(
                           color: kText, fontSize: 28, fontWeight: FontWeight.w800,
