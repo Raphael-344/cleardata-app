@@ -41,7 +41,7 @@ class StatCard extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [kSurface, const Color(0xFF153D18).withOpacity(0.4)],
+          colors: [kSurface, const Color(0xFF153D18).withValues(alpha: 0.4)],
         ),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: kBorder),
@@ -129,13 +129,13 @@ class SectionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(width: 20, height: 1, color: kPrimary.withOpacity(0.5)),
+        Container(width: 20, height: 1, color: kPrimary.withValues(alpha: 0.5)),
         const SizedBox(width: 8),
         Text(title, style: const TextStyle(
           color: kText, fontSize: 20, fontWeight: FontWeight.w700,
         )),
         const SizedBox(width: 8),
-        Expanded(child: Container(height: 1, color: kPrimary.withOpacity(0.1))),
+        Expanded(child: Container(height: 1, color: kPrimary.withValues(alpha: 0.1))),
       ],
     );
   }

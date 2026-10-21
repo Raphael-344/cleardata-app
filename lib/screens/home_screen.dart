@@ -4,7 +4,10 @@ import '../theme.dart';
 import '../widgets/common.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  /// Change l'onglet actif du MainScreen (index de la barre de navigation)
+  final ValueChanged<int>? onNavigate;
+
+  const HomeScreen({super.key, this.onNavigate});
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -83,6 +86,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                         ),
+                        const SizedBox(height: 4),
+                        const Text('Projet étudiant CESI, non affilié au Ministère de la Transition écologique',
+                          style: TextStyle(color: kTextMuted, fontSize: 10)),
                         const SizedBox(height: 10),
                         const Text('Qualité de l\'air', style: TextStyle(
                           color: kText, fontSize: 28, fontWeight: FontWeight.w800,
@@ -142,9 +148,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: kGazColors.entries.map((e) => Container(
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     decoration: BoxDecoration(
-                      color: e.value.withOpacity(0.1),
+                      color: e.value.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: e.value.withOpacity(0.3)),
+                      border: Border.all(color: e.value.withValues(alpha: 0.3)),
                     ),
                     child: Text(e.key, style: TextStyle(
                       color: e.value, fontWeight: FontWeight.w700,
@@ -184,9 +190,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _navigate(BuildContext context, int index) {
-    // On utilise le MainScreen pour changer d'onglet
-    final scaffold = context.findAncestorStateOfType<_HomeScreenState>();
-    // Navigation via callback du parent
+    // Navigation via callback du MainScreen, qui change d'onglet
+    widget.onNavigate?.call(index);
   }
 }
 

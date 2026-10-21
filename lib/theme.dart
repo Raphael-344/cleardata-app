@@ -26,7 +26,6 @@ final ThemeData appTheme = ThemeData(
   colorScheme: const ColorScheme.dark(
     primary: kPrimary,
     surface: kSurface,
-    background: kBg,
   ),
   textTheme: GoogleFonts.spaceGroteskTextTheme(
     const TextTheme(
@@ -35,7 +34,7 @@ final ThemeData appTheme = ThemeData(
     ),
   ),
   appBarTheme: AppBarTheme(
-    backgroundColor: Color(0xEE050A06),
+    backgroundColor: const Color(0xEE050A06),
     elevation: 0,
     centerTitle: false,
     titleTextStyle: GoogleFonts.syne(

@@ -40,12 +40,12 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _index = 0;
 
-  final List<Widget> _screens = const [
-    HomeScreen(),
-    CarteScreen(),
-    GraphiquesScreen(),
-    RequetesScreen(),
-    RechercheScreen(),
+  late final List<Widget> _screens = [
+    HomeScreen(onNavigate: (i) => setState(() => _index = i)),
+    const CarteScreen(),
+    const GraphiquesScreen(),
+    const RequetesScreen(),
+    const RechercheScreen(),
   ];
 
   @override
