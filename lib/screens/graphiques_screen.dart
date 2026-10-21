@@ -119,8 +119,8 @@ class _GraphiquesScreenState extends State<GraphiquesScreen> {
                               : LineChart(LineChartData(
                                   gridData: FlGridData(
                                     show: true,
-                                    getDrawingHorizontalLine: (_) => FlLine(color: kBorder, strokeWidth: 1),
-                                    getDrawingVerticalLine: (_) => FlLine(color: kBorder, strokeWidth: 1),
+                                    getDrawingHorizontalLine: (_) => const FlLine(color: kBorder, strokeWidth: 1),
+                                    getDrawingVerticalLine: (_) => const FlLine(color: kBorder, strokeWidth: 1),
                                   ),
                                   titlesData: FlTitlesData(
                                     leftTitles: AxisTitles(sideTitles: SideTitles(
@@ -154,7 +154,7 @@ class _GraphiquesScreenState extends State<GraphiquesScreen> {
                                     dotData: const FlDotData(show: false),
                                     belowBarData: BarAreaData(
                                       show: true,
-                                      color: color.withOpacity(0.1),
+                                      color: color.withValues(alpha: 0.1),
                                     ),
                                   )],
                                 )),
@@ -199,7 +199,7 @@ class _GraphiquesScreenState extends State<GraphiquesScreen> {
                                   borderRadius: BorderRadius.circular(4),
                                   child: LinearProgressIndicator(
                                     value: maxG > 0 ? val / maxG : 0,
-                                    backgroundColor: c.withOpacity(0.1),
+                                    backgroundColor: c.withValues(alpha: 0.1),
                                     valueColor: AlwaysStoppedAnimation(c),
                                     minHeight: 6,
                                   ),

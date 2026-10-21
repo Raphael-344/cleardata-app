@@ -127,12 +127,12 @@ class _RechercheScreenState extends State<RechercheScreen> {
             child: loading
                 ? const Center(child: CircularProgressIndicator(color: kPrimary))
                 : _ctrl.text.length < 2
-                    ? Center(child: Column(
+                    ? const Center(child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Icon(Icons.air, color: kTextMuted, size: 48),
-                          const SizedBox(height: 12),
-                          const Text('Tapez le nom d\'une ville', style: TextStyle(color: kTextMuted)),
+                          Icon(Icons.air, color: kTextMuted, size: 48),
+                          SizedBox(height: 12),
+                          Text('Tapez le nom d\'une ville', style: TextStyle(color: kTextMuted)),
                         ],
                       ))
                     : grouped.isEmpty
@@ -194,9 +194,9 @@ class _RechercheScreenState extends State<RechercheScreen> {
                                           return Container(
                                             padding: const EdgeInsets.all(8),
                                             decoration: BoxDecoration(
-                                              color: color.withOpacity(0.08),
+                                              color: color.withValues(alpha: 0.08),
                                               borderRadius: BorderRadius.circular(8),
-                                              border: Border.all(color: color.withOpacity(0.2)),
+                                              border: Border.all(color: color.withValues(alpha: 0.2)),
                                             ),
                                             child: Column(
                                               crossAxisAlignment: CrossAxisAlignment.start,

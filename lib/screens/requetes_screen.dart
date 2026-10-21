@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import '../services/api_service.dart';
 import '../theme.dart';
-import '../widgets/common.dart';
 
 const _requetes = [
   {'id': '1', 'label': 'Liste des agences', 'desc': 'Toutes les agences régionales'},
   {'id': '2', 'label': 'Personnel Bordeaux', 'desc': 'Agents techniques de Bordeaux'},
   {'id': '3', 'label': 'Nombre de capteurs', 'desc': 'Comptage total des capteurs'},
   {'id': '4', 'label': 'Rapports 2018–2022', 'desc': 'Rapports sur la période'},
-  {'id': '5', 'label': 'CH4 IdF/Bretagne/Occitanie', 'desc': 'Concentrations méthane 2023'},
+  {'id': '5', 'label': 'CH4 IdF/Bretagne/Occitanie', 'desc': 'Concentrations méthane mai-juin 2025'},
   {'id': '6', 'label': 'Agents GESI', 'desc': 'Techniciens capteurs industriels'},
-  {'id': '7', 'label': 'Rapports NH3', 'desc': 'Ammoniac, ordre antichronologique'},
+  {'id': '7', 'label': 'Rapports CO2', 'desc': 'Dioxyde de carbone, ordre antichronologique'},
   {'id': '8', 'label': 'Minimum HFC', 'desc': 'Mois de concentration minimale'},
-  {'id': '9', 'label': 'Moyennes IdF 2020', 'desc': 'Concentration par gaz'},
+  {'id': '9', 'label': 'Moyennes IdF 2025', 'desc': 'Concentration par gaz'},
   {'id': '10', 'label': 'Productivité Toulouse', 'desc': 'Taux de production rapports'},
   {'id': '11', 'label': 'Rapports par gaz', 'desc': 'Procédure stockée', 'hasParam': true},
   {'id': '12', 'label': 'Régions sous-encadrées', 'desc': 'Plus capteurs que personnel'},
@@ -67,7 +66,7 @@ class _RequetesScreenState extends State<RequetesScreen> {
                       decoration: BoxDecoration(
                         color: isSelected ? kPrimaryDim : kSurface,
                         borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: isSelected ? kPrimary.withOpacity(0.5) : kBorder),
+                        border: Border.all(color: isSelected ? kPrimary.withValues(alpha: 0.5) : kBorder),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -134,15 +133,19 @@ class _ResultPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (loading) return const Center(child: CircularProgressIndicator(color: kPrimary));
-    if (result == null) return const Center(
+    if (result == null) {
+      return const Center(
       child: Text('Sélectionnez une requête', style: TextStyle(color: kTextMuted)),
     );
-    if (result!['error'] != null) return Center(
+    }
+    if (result!['error'] != null) {
+      return Center(
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Text(result!['error'].toString(), style: const TextStyle(color: Colors.red)),
       ),
     );
+    }
 
     final rows = result!['rows'] as List? ?? [];
     if (rows.isEmpty) return const Center(child: Text('Aucun résultat', style: TextStyle(color: kTextMuted)));

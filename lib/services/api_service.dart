@@ -16,6 +16,18 @@ class ApiService {
     return data['rows'] ?? [];
   }
 
+  static Map<String, List<double>>? _cityCoords;
+
+  /// Coordonnées des communes (nom → [lat, lng]), même fichier que la carte du site web
+  static Future<Map<String, List<double>>> getCityCoords() async {
+    if (_cityCoords != null) return _cityCoords!;
+    final res = await http.get(Uri.parse('$baseUrl/city_coords.json'));
+    final data = jsonDecode(utf8.decode(res.bodyBytes)) as Map<String, dynamic>;
+    _cityCoords = data.map((ville, c) =>
+        MapEntry(ville, (c as List).map((v) => (v as num).toDouble()).toList()));
+    return _cityCoords!;
+  }
+
   static Future<Map<String, dynamic>> getRequete(String id, {String? param}) async {
     final p = param != null ? '&param=${Uri.encodeComponent(param)}' : '';
     final res = await http.get(Uri.parse('$baseUrl/api/requetes?id=$id$p'));
